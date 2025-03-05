@@ -3,7 +3,7 @@ import os
 
 class Config:
     # API URLs
-    LM_STUDIO_API_URL = os.getenv("LM_STUDIO_API_URL", "http://host.docker.internal:1234/v1/chat/completions")
+    LM_STUDIO_API_URL = os.getenv("LM_STUDIO_API_URL", "http://127.0.0.1:1234")
     LM_STUDIO_EMBEDDING_API_URL = os.getenv("LM_STUDIO_EMBEDDING_API_URL", "http://host.docker.internal:1234/v1/embeddings")
     
     # Model names
@@ -21,7 +21,7 @@ class Config:
     LANGUAGE = os.getenv("LANGUAGE", "de")
     
     # RAG settings
-    COSINE_SIMILARITY_THRESHOLD = float(os.getenv("COSINE_SIMILARITY_THRESHOLD", "0.5"))
+    COSINE_SIMILARITY_THRESHOLD = float(os.getenv("COSINE_SIMILARITY_THRESHOLD", "0.4"))
     EMBEDDING_BATCH_SIZE = int(os.getenv("EMBEDDING_BATCH_SIZE", "32"))
     
     # Server settings
