@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  ragchatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: michafein/ragchatapp:german
+    container_name: ragchatbot-german
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./embeddings:/app/embeddings
+      - ./pages_and_chunks:/app/pages_and_chunks
+      - ./logs:/app/logs
+    environment:
+      - FLASK_APP=app.py
+      - DEBUG=False
+      - SECRET_KEY=RAG_my_key
+      - LANGUAGE=de
+      - EMBEDDING_MODEL_NAME=text-embedding-all-minilm-l6-v2-embedding
+      - CHAT_MODEL_NAME=german-rag-deepseek-r1-redistill-qwen-7b-v1.2-sft-de
+      - COSINE_SIMILARITY_THRESHOLD=0.45
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
