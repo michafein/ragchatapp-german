@@ -8,7 +8,7 @@ class Config:
     
     # Model names
     EMBEDDING_MODEL_NAME = os.getenv("EMBEDDING_MODEL_NAME", "text-embedding-all-minilm-l6-v2-embedding")
-    CHAT_MODEL_NAME = os.getenv("CHAT_MODEL_NAME", "german-rag-deepseek-r1-redistill-qwen-7b-v1.2-sft-de")
+    CHAT_MODEL_NAME = os.getenv("CHAT_MODEL_NAME", "deepseek-r1-distill-qwen-14b")
     
     # PDF path for default document (if needed)
     PDF_PATH = os.getenv("PDF_PATH", "human-nutrition-text.pdf")
